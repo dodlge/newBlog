@@ -19,6 +19,10 @@ body{
     padding-top: 0.1em !important;
     padding-bottom: 0.1em !important;
 }
+.m-padded-tb-large{
+    padding-top: 5em !important;
+    padding-bottom: 5em !important;
+}
 .m-padded-tb-tiny-top-30{
     padding-top: 3em !important;
 }
@@ -99,6 +103,11 @@ body{
     opacity: 0.6!important;
 }
 
+/*-------shaodw(阴影)--------*/
+.m-shadow-small{
+    -webkit-box-shadow: 0 5px 8px rgba(0,0,0,0.2)!important;
+    box-shadow: 0 5px 8px rgba(0,0,0,0.2)!important;
+}
 /*-------控制显示--------*/
 .m-mobile-show{
     display: none !important;
@@ -112,6 +121,10 @@ body{
         display: block !important;
     }
     .m-padded-lr-reponsive{
+        padding-left: 0em !important;
+        padding-right: 0em !important;
+    }
+    .m-moblie-lr-clear{
         padding-left: 0em !important;
         padding-right: 0em !important;
     }
