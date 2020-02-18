@@ -6,6 +6,7 @@
     <title>博客管理</title>
     <link href="https://cdn.bootcss.com/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
     <link href="../static/css/me.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/lib/editormd/css/editormd.min.css">
 </head>
 <body>
 <!--导航-->
@@ -69,7 +70,19 @@
 
             <!--内容-->
             <div class="field">
-                <textarea name="content" id="" placeholder="博客内容"></textarea>
+                <div id="md-content" style="z-index: 1 !important;">
+            <textarea placeholder="博客内容" name="content" style="display: none">
+              [TOC]
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+            </textarea>
+                </div>
             </div>
 
             <!--分类和标签-->
@@ -153,10 +166,21 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="../static/js/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="../static/lib/editormd/editormd.min.js"></script>
 
-<script>
+<script type="text/javascript">
+    // 初始化markdown编辑器
+    var testEditor;
+    $(function() {
+        testEditor = editormd("md-content", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+            path: "../static/lib/editormd/lib/"
+        });
+    });
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
     });
@@ -177,6 +201,8 @@
             }
         }
     });
+
+
 </script>
 </body>
 </html>
