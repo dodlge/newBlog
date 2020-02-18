@@ -8,6 +8,7 @@
     <link href="static/css/me.css" rel="stylesheet">
     <link href="static/css/typo.css" rel="stylesheet">
     <link href="static/css/animate.css" rel="stylesheet">
+    <link href="static/lib/prism/prism.css" rel="stylesheet">
 </head>
 <body>
 <!--导航-->
@@ -273,7 +274,7 @@
                     You just need to follow the browser's behavior, and set a right <code>margin</code> to it。it will works nice as the
                     demo you're watching now. The following code is the best way to render typo in Chinese:
                 </p>
-                <pre>
+                <pre><code class="language-css">
 /* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
 h1,h2,h3,h4,h5,h6 {
     line-height:1;font-family:Arial,sans-serif;margin:1.4em 0 0.8em;
@@ -287,7 +288,7 @@ h5,h6{font-size:1em;}
 /* 现代排版：保证块/段落之间的空白隔行 */
 .typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr {
     margin:1em 0 0.6em;
-}
+                    }</code>
 </pre>
 
                 <h3 id="section3">三、附录</h3>
@@ -610,6 +611,7 @@ h5,h6{font-size:1em;}
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="static/lib/prism/prism.js"></script>
 
 <script>
     $('.menu.toggle').click(function () {
