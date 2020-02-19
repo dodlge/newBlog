@@ -36,7 +36,7 @@
 </nav>
 
 <!--中间内容-->
-<div class="m-container-small m-padded-tb-tiny-top-30 animated pulse">
+<div id="waypoint" class="m-container-small m-padded-tb-tiny-top-30 animated pulse">
     <div class=" ui container">
         <!--头部-->
         <div class="ui top attached segment">
@@ -572,7 +572,7 @@ h5,h6{font-size:1em;}
 
 
 <!--导航-->
-<div class="m-fixed m-right-bottom m-padded">
+<div id="toolbar" class="m-fixed m-right-bottom m-padded" style="display: none">
     <diV class="ui vertical icon buttons">
         <button id="toc-button" class="ui teal button" type="button">目录</button>
         <a href="#comment-container" class="ui teal button">留言</a>
@@ -634,11 +634,15 @@ h5,h6{font-size:1em;}
 <!--js引用-->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<!--平滑滚动-->
+<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+
 <script src="static/lib/prism/prism.js"></script>
 <script src="static/lib/tocbot/tocbot.min.js"></script>
 <script src="static/lib/qrcode/qrcode.min.js"></script>
-<!--平滑滚动-->
-<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+<!--滚动触发-->
+<script src="static/lib/waypoints/jquery.waypoints.min.js"></script>
+
 
 <script>
 
@@ -693,6 +697,18 @@ h5,h6{font-size:1em;}
         $(window).scrollTo(0,600);
     });
 
+    // 判断上下滑动
+    var waypoint = new Waypoint({
+        element: document.getElementById('waypoint'),
+        handler: function(direction) {
+            if (direction == "down"){
+                $('#toolbar').show(100);
+            } else{
+                $('#toolbar').hide(500);
+            }
+            console.log('Scrolled to waypoint!')
+        }
+    })
 </script>
 </body>
 </html>
