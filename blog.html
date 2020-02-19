@@ -9,6 +9,7 @@
     <link href="static/css/typo.css" rel="stylesheet">
     <link href="static/css/animate.css" rel="stylesheet">
     <link href="static/lib/prism/prism.css" rel="stylesheet">
+    <link href="static/lib/tocbot/tocbot.css" rel="stylesheet">
 </head>
 <body>
 <!--导航-->
@@ -69,7 +70,7 @@
             <br>
 
             <!--内容-->
-            <div id="content" class="typo typo-selection m-padded-lr-reponsive m-padded-tb-mini">
+            <div id="content"  class="js-toc-content typo typo-selection m-padded-lr-reponsive m-padded-tb-mini">
                 <h1>中文网页重设与排版：<i class="serif">Typo.css</i></h1><br/>
 
                 <h2 id="tagline" class="serif">一致化浏览器排版效果，构建最适合中文阅读的网页排版</h2>
@@ -469,7 +470,7 @@ h5,h6{font-size:1em;}
             </div>
         </div>
         <!--留言-->
-        <div class="ui bottom attached segment">
+        <div id="comment-container" class="ui bottom attached segment">
             <div class="ui threaded comments">
                 <h3 class="ui dividing header">留言</h3>
                 <div class="comment">
@@ -568,6 +569,22 @@ h5,h6{font-size:1em;}
         </div>
     </div>
 </div>
+
+
+<!--导航-->
+<div class="m-fixed m-right-bottom m-padded">
+    <diV class="ui vertical icon buttons">
+        <button id="toc-button" class="ui teal button" type="button">目录</button>
+        <a href="#comment-container" class="ui teal button">留言</a>
+        <button class="ui icon button"><i class="weixin icon"></i></button>
+        <a href="#" class="ui icon button"><i class="chevron up icon"></i></a>
+    </diV>
+</div>
+<!--点击目录按钮展开的目录-->
+<div class="ui toc-conatiner flowing popup transition hidden" style="width: 250px;">
+    <ol class="js-toc"></ol>
+</div>
+
 <br>
 <br>
 <!--底部footer-->
@@ -609,11 +626,15 @@ h5,h6{font-size:1em;}
         <p class="m-text-TSL m-opacity-tiny">Copyright© 2016-2020 wz Designed by wz</p>
     </div>
 </footer>
+
+<!--js引用-->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 <script src="static/lib/prism/prism.js"></script>
+<script src="static/lib/tocbot/tocbot.min.js"></script>
 
 <script>
+
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
     });
@@ -623,6 +644,25 @@ h5,h6{font-size:1em;}
         popup: $('.payQR.popup'),
         on: 'click',// 点击触发
         position: 'bottom center' //下面的位置 中间
+    });
+
+    //点击目录
+    $('#toc-button').popup({
+    popup: $('.toc-conatiner.popup'),
+        on: 'click',// 点击触发
+        position: 'left center' //下面的位置 中间
+    });
+
+    // 初始化
+    tocbot.init({
+        // 在哪里展示
+        tocSelector: '.js-toc',
+        // 在哪里获取
+        contentSelector: '.js-toc-content',
+        // 标题级别
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
     });
 </script>
 </body>
